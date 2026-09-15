@@ -15,25 +15,24 @@ st.set_page_config(
 )
 
 # =========================================================
-# CLOUD-SAFE CLEAN CSS (NO SCROLL-LOCKING CONFLICTS)
+# PREMIUM COLORFUL UI (STABLE & FLICKER-FREE)
 # =========================================================
 st.markdown("""<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap');
 
 * {
     font-family: 'DM Sans', sans-serif;
 }
 
-/* Background Color */
 .stApp {
     background-color: #070B14;
     color: #E2E8F0;
 }
 
 .block-container {
-    max-width: 1100px;
+    max-width: 1150px;
     padding-top: 1.5rem;
-    padding-bottom: 6rem;
+    padding-bottom: 5rem;
 }
 
 #MainMenu, footer { visibility: hidden; }
@@ -61,17 +60,17 @@ div[role="radiogroup"] > label {
     padding: 8px 12px;
 }
 
-/* HERO BRAND */
+/* BRAND HEADER */
 .brand-container {
-    padding-bottom: 16px;
-    margin-bottom: 18px;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .brand-kicker {
     display: inline-block;
     padding: 4px 10px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     background: rgba(99, 102, 241, 0.15);
     border: 1px solid rgba(129, 140, 248, 0.3);
     border-radius: 999px;
@@ -95,63 +94,100 @@ div[role="radiogroup"] > label {
 
 .brand-subtitle {
     color: #94A3B8;
-    font-size: 0.96rem;
+    font-size: 0.95rem;
     margin-top: 6px;
     line-height: 1.5;
 }
 
-/* SECTION HEADER */
+/* SECTION TITLE */
 .section-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 12px 0 16px 0;
+    margin: 10px 0 16px 0;
 }
 
 .section-icon {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     background: rgba(99, 102, 241, 0.15);
     border: 1px solid rgba(129, 140, 248, 0.25);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 }
 
 .section-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     font-weight: 700;
     color: #F8FAFC;
     margin: 0;
 }
 
-/* STYLING FOR STREAMLIT BORDERED CONTAINERS */
-div[data-testid="stVerticalBlockBorderWrapper"] {
-    border-radius: 14px !important;
-    margin-bottom: 16px !important;
-    padding: 6px !important;
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+/* VIBRANT COLORFUL CARDS (ZERO OVERFLOW GLITCH) */
+.card-box {
+    padding: 22px 26px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    box-sizing: border-box;
 }
 
-.card-title-text {
+.card-blue {
+    background: #0C1E3D !important;
+    border: 1px solid #1D4ED8 !important;
+    border-left: 6px solid #3B82F6 !important;
+    color: #DBEAFE !important;
+}
+
+.card-green {
+    background: #062E22 !important;
+    border: 1px solid #059669 !important;
+    border-left: 6px solid #10B981 !important;
+    color: #D1FAE5 !important;
+}
+
+.card-amber {
+    background: #331A05 !important;
+    border: 1px solid #D97706 !important;
+    border-left: 6px solid #F59E0B !important;
+    color: #FEF3C7 !important;
+}
+
+.card-red {
+    background: #361012 !important;
+    border: 1px solid #DC2626 !important;
+    border-left: 6px solid #EF4444 !important;
+    color: #FEE2E2 !important;
+}
+
+.card-purple {
+    background: #241142 !important;
+    border: 1px solid #7C3AED !important;
+    border-left: 6px solid #8B5CF6 !important;
+    color: #EDE9FE !important;
+}
+
+.card-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.18rem;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.text-blue { color: #60A5FA; }
-.text-green { color: #34D399; }
-.text-amber { color: #FBBF24; }
-.text-red { color: #F87171; }
-.text-purple { color: #C084FC; }
+.card-body {
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #F1F5F9;
+}
 
 /* PROGRESS */
 .progress-wrapper {
@@ -235,8 +271,8 @@ def call_groq_robust(prompt: str, retries: int = 3) -> tuple[str, bool]:
     system_prompt = (
         "You are an expert executive interview mentor. "
         "RULES: "
-        "1. Use simple, conversational, everyday English. No complex jargon. "
-        "2. Do NOT output markdown asterisks (no **text**). Use clean HTML <b>text</b> instead. "
+        "1. Use simple, conversational, everyday English. "
+        "2. Do NOT use markdown bold stars (no **text**). "
         "3. Write short, clear, complete sentences. "
         "4. Keep answers brief and immediately scannable."
     )
@@ -288,9 +324,6 @@ def parse_file(uploaded_file) -> str:
     except Exception as err:
         st.error(f"Error reading file: {err}")
         return ""
-
-def format_clean_html(content: str) -> str:
-    return content.replace("\n", "<br>")
 
 # =========================================================
 # SIDEBAR
@@ -377,13 +410,14 @@ with st.expander("📄  Upload or Paste Your Resume", expanded=not bool(st.sessi
             st.rerun()
 
 if not st.session_state.cv_text:
-    with st.container(border=True):
-        st.markdown('<div class="card-title-text text-blue">🚀 Ready to begin?</div>', unsafe_allow_html=True)
-        st.write("Upload your resume or paste your CV above. MockMaster AI will turn it into a structured interview preparation workflow.")
+    st.markdown("""<div class="card-box card-blue">
+        <div class="card-title">🚀 Ready to begin?</div>
+        <div class="card-body">Upload your resume or paste your CV above. MockMaster AI will turn it into a structured interview preparation workflow.</div>
+    </div>""", unsafe_allow_html=True)
     st.stop()
 
 # =========================================================
-# PROGRESS & SECTION TITLE
+# PROGRESS & TITLE
 # =========================================================
 curr_step = st.session_state.active_step
 step_title, step_icon = STEPS_LIST[curr_step]
@@ -424,51 +458,54 @@ def handle_step_generation(step_key: str, button_label: str, prompt: str):
     return st.session_state.cached_steps.get(step_key, None)
 
 # =========================================================
-# PIPELINE STAGES (USING NATIVE CONTAINERS)
+# PIPELINE STAGES (COLORFUL & STABLE)
 # =========================================================
 
 # STEP 1
 if curr_step == 0:
     prompt = (
         f"Read this CV and describe the candidate in simple, everyday English.\n"
-        f"Write 3 short paragraphs:\n"
-        f"1. Who this person is and their main expertise.\n"
-        f"2. Their top 2 real projects and what they built.\n"
-        f"3. Their biggest single achievement in plain words.\n\nCV:\n{cv_context}"
+        f"Write 3 short sections:\n"
+        f"Who this person is and their main expertise:\n"
+        f"Their top 2 real projects and what they built:\n"
+        f"Their biggest single achievement in plain words:\n\nCV:\n{cv_context}"
     )
     result = handle_step_generation("step_1", "✨ Generate Candidate Overview", prompt)
     if result:
-        with st.container(border=True):
-            st.markdown('<div class="card-title-text text-blue">📌 Candidate Snapshot</div>', unsafe_allow_html=True)
-            st.markdown(format_clean_html(result), unsafe_allow_html=True)
+        st.markdown(f"""<div class="card-box card-blue">
+            <div class="card-title">📌 Candidate Snapshot</div>
+            <div class="card-body">{result}</div>
+        </div>""", unsafe_allow_html=True)
 
 # STEP 2
 elif curr_step == 1:
     prompt = (
         f"List the candidate's skills from this CV in very simple sentences:\n"
-        f"- Main Coding Languages: (one clear sentence)\n"
-        f"- Important Libraries & Tools: (one clear sentence)\n"
-        f"- Practical Skills: (2 simple sentences on what they actually build)\n\nCV:\n{cv_context}"
+        f"Main Coding Languages: (one clear sentence)\n"
+        f"Important Libraries & Tools: (one clear sentence)\n"
+        f"Practical Skills: (2 simple sentences on what they actually build)\n\nCV:\n{cv_context}"
     )
     result = handle_step_generation("step_2", "🛠️ Extract Core Skills", prompt)
     if result:
-        with st.container(border=True):
-            st.markdown('<div class="card-title-text text-green">🛠️ Core Capabilities</div>', unsafe_allow_html=True)
-            st.markdown(format_clean_html(result), unsafe_allow_html=True)
+        st.markdown(f"""<div class="card-box card-green">
+            <div class="card-title">🛠️ Core Capabilities</div>
+            <div class="card-body">{result}</div>
+        </div>""", unsafe_allow_html=True)
 
 # STEP 3
 elif curr_step == 2:
     prompt = (
         f"Tell this candidate what is missing or vague in their CV using simple English:\n"
-        f"1. Where did they forget to provide concrete numbers or percentages?\n"
-        f"2. Which project lacks proof of real-world scale or users?\n"
-        f"3. What is one quick update they should make right now?\n\nCV:\n{cv_context}"
+        f"1. Missing numbers or percentages (which claims need numbers?)\n\n"
+        f"2. Projects lacking proof of real-world scale or users\n\n"
+        f"3. One quick update to make right now\n\nCV:\n{cv_context}"
     )
     result = handle_step_generation("step_3", "🔎 Audit Missing Information", prompt)
     if result:
-        with st.container(border=True):
-            st.markdown('<div class="card-title-text text-amber">⚠️ Things to Clarify</div>', unsafe_allow_html=True)
-            st.markdown(format_clean_html(result), unsafe_allow_html=True)
+        st.markdown(f"""<div class="card-box card-amber">
+            <div class="card-title">⚠️ Things to Clarify</div>
+            <div class="card-body">{result}</div>
+        </div>""", unsafe_allow_html=True)
 
 # STEP 4
 elif curr_step == 3:
@@ -486,13 +523,15 @@ elif curr_step == 3:
 
         col_s, col_w = st.columns(2, gap="large")
         with col_s:
-            with st.container(border=True):
-                st.markdown('<div class="card-title-text text-green">🟢 Key Strengths</div>', unsafe_allow_html=True)
-                st.markdown(format_clean_html(str_content), unsafe_allow_html=True)
+            st.markdown(f"""<div class="card-box card-green">
+                <div class="card-title">🟢 Key Strengths</div>
+                <div class="card-body">{str_content}</div>
+            </div>""", unsafe_allow_html=True)
         with col_w:
-            with st.container(border=True):
-                st.markdown('<div class="card-title-text text-red">🔴 Key Gaps & Weaknesses</div>', unsafe_allow_html=True)
-                st.markdown(format_clean_html(gap_content), unsafe_allow_html=True)
+            st.markdown(f"""<div class="card-box card-red">
+                <div class="card-title">🔴 Key Gaps & Weaknesses</div>
+                <div class="card-body">{gap_content}</div>
+            </div>""", unsafe_allow_html=True)
 
 # STEP 5
 elif curr_step == 4:
@@ -504,9 +543,10 @@ elif curr_step == 4:
     )
     result = handle_step_generation("step_5", "🛡️ Detect Interview Red Flags", prompt)
     if result:
-        with st.container(border=True):
-            st.markdown('<div class="card-title-text text-red">🛡️ Interview Doubts & Defenses</div>', unsafe_allow_html=True)
-            st.markdown(format_clean_html(result), unsafe_allow_html=True)
+        st.markdown(f"""<div class="card-box card-red">
+            <div class="card-title">🛡️ Interview Doubts & Defenses</div>
+            <div class="card-body">{result}</div>
+        </div>""", unsafe_allow_html=True)
 
 # STEP 6
 elif curr_step == 5:
@@ -518,9 +558,10 @@ elif curr_step == 5:
     )
     result = handle_step_generation("step_6", "❓ Generate Interview Questions", prompt)
     if result:
-        with st.container(border=True):
-            st.markdown('<div class="card-title-text text-blue">❓ Likely Interview Questions</div>', unsafe_allow_html=True)
-            st.markdown(format_clean_html(result), unsafe_allow_html=True)
+        st.markdown(f"""<div class="card-box card-blue">
+            <div class="card-title">❓ Likely Interview Questions</div>
+            <div class="card-body">{result}</div>
+        </div>""", unsafe_allow_html=True)
 
 # STEP 7
 elif curr_step == 6:
@@ -530,9 +571,10 @@ elif curr_step == 6:
     )
     result = handle_step_generation("step_7", "🎯 Prioritize Top Questions", prompt)
     if result:
-        with st.container(border=True):
-            st.markdown('<div class="card-title-text text-purple">🎯 Guaranteed Questions</div>', unsafe_allow_html=True)
-            st.markdown(format_clean_html(result), unsafe_allow_html=True)
+        st.markdown(f"""<div class="card-box card-purple">
+            <div class="card-title">🎯 Guaranteed Questions</div>
+            <div class="card-body">{result}</div>
+        </div>""", unsafe_allow_html=True)
 
 # STEP 8
 elif curr_step == 7:
@@ -545,9 +587,10 @@ elif curr_step == 7:
     )
     result = handle_step_generation("step_8", "⭐ Generate STAR Model Answer", prompt)
     if result:
-        with st.container(border=True):
-            st.markdown('<div class="card-title-text text-green">⭐ STAR Answer Blueprint</div>', unsafe_allow_html=True)
-            st.markdown(format_clean_html(result), unsafe_allow_html=True)
+        st.markdown(f"""<div class="card-box card-green">
+            <div class="card-title">⭐ STAR Answer Blueprint</div>
+            <div class="card-body">{result}</div>
+        </div>""", unsafe_allow_html=True)
 
 # STEP 9
 elif curr_step == 8:
@@ -557,9 +600,10 @@ elif curr_step == 8:
     )
     result = handle_step_generation("step_9", "💡 Prepare Curveball Coach", prompt)
     if result:
-        with st.container(border=True):
-            st.markdown('<div class="card-title-text text-amber">💡 Tricky Questions & Answers</div>', unsafe_allow_html=True)
-            st.markdown(format_clean_html(result), unsafe_allow_html=True)
+        st.markdown(f"""<div class="card-box card-amber">
+            <div class="card-title">💡 Tricky Questions & Answers</div>
+            <div class="card-body">{result}</div>
+        </div>""", unsafe_allow_html=True)
 
 # STEP 10
 elif curr_step == 9:
@@ -572,15 +616,17 @@ elif curr_step == 9:
     )
     result = handle_step_generation("step_10", "🏆 Calculate Readiness & Tips", prompt)
     if result:
-        with st.container(border=True):
-            st.markdown('<div class="card-title-text text-purple">🏆 Score & Core Advice</div>', unsafe_allow_html=True)
-            st.markdown(format_clean_html(result), unsafe_allow_html=True)
+        st.markdown(f"""<div class="card-box card-purple">
+            <div class="card-title">🏆 Score & Core Advice</div>
+            <div class="card-body">{result}</div>
+        </div>""", unsafe_allow_html=True)
 
 # STEP 11
 elif curr_step == 10:
-    with st.container(border=True):
-        st.markdown('<div class="card-title-text text-blue">💬 AI Mock Interview Simulator</div>', unsafe_allow_html=True)
-        st.write("Type your draft answer to an interview question. MockMaster AI will score your answer from <b>1 to 10</b>, show what to improve, and give you a stronger version.", unsafe_allow_html=True)
+    st.markdown("""<div class="card-box card-blue">
+        <div class="card-title">💬 AI Mock Interview Simulator</div>
+        <div class="card-body">Type your draft answer to an interview question. MockMaster AI will score your answer from 1 to 10, show what to improve, and give you a stronger version.</div>
+    </div>""", unsafe_allow_html=True)
 
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):
